@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aureo Cañón · 2 Ambientes · San Fernando · A Estrenar</title>
+<meta name="description" content="2 ambientes a estrenar en Aureo Cañón, San Fernando. Terraza 360° con parrilla, cocina equipada, balcón al frente. Posibilidad de cochera.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --negro: #09090b;
+  --carbon: #111114;
+  --gris1: #18181c;
+  --gris2: #1f1f25;
+  --gris3: #2a2a32;
+  --oro: #c8a96e;
+  --oro2: #e2c88a;
+  --blanco: #f4f0e8;
+  --texto: rgba(244,240,232,0.62);
+  --texto2: rgba(244,240,232,0.35);
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { background: var(--negro); color: var(--blanco); font-family: var(--sans); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+img { display: block; }
+button, a { font-family: var(--sans); }
+
+/* ─── BARRA SUPERIOR ─── */
+.topbar {
+  background: var(--oro); color: var(--negro);
+  text-align: center; padding: 9px 20px;
+  font-size: 11px; letter-spacing: 0.22em; font-weight: 500;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 36px; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 48px;
+  transition: all 0.4s var(--ease);
+}
+nav.sc {
+  top: 0;
+  background: rgba(9,9,11,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(200,169,110,0.12);
+}
+.nav-logo {
+  font-family: var(--serif); font-size: 20px; letter-spacing: 0.25em;
+  font-weight: 400; color: var(--blanco); text-decoration: none;
+  line-height: 1;
+}
+.nav-logo span { color: var(--oro); }
+.nav-links { display: flex; gap: 32px; }
+.nav-links a {
+  font-size: 11px; letter-spacing: 0.16em; color: var(--texto);
+  text-decoration: none; font-weight: 400; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--oro); }
+.nav-cta {
+  background: transparent; border: 1px solid var(--oro);
+  color: var(--oro); font-size: 10px; letter-spacing: 0.22em;
+  font-weight: 500; padding: 10px 24px; cursor: pointer;
+  text-decoration: none; transition: all 0.25s var(--ease);
+  display: inline-block;
+}
+.nav-cta:hover { background: var(--oro); color: var(--negro); }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh; position: relative;
+  display: grid; grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+}
+.hero-left {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 120px 64px 80px;
+  background: linear-gradient(135deg, rgba(9,9,11,0.98) 0%, rgba(9,9,11,0.9) 60%, rgba(9,9,11,0.6) 100%);
+}
+.hero-right {
+  position: relative; overflow: hidden;
+}
+.hero-right::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, var(--negro) 0%, transparent 30%);
+  z-index: 1;
+}
+.hero-img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 8s var(--ease);
+}
+.hero:hover .hero-img { transform: scale(1.04); }
+
+.hero-kicker {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 28px;
+}
+.hero-kicker-line { width: 32px; height: 1px; background: var(--oro); flex-shrink: 0; }
+.hero-kicker-txt {
+  font-size: 10px; letter-spacing: 0.3em; color: var(--oro); font-weight: 400;
+}
+.hero-title {
+  font-family: var(--serif); font-weight: 300;
+  font-size: clamp(42px, 5.5vw, 72px); line-height: 1.05;
+  color: var(--blanco); margin-bottom: 6px;
+}
+.hero-title em { font-style: italic; color: var(--oro2); }
+.hero-sub {
+  font-size: 14px; color: var(--texto); line-height: 1.75;
+  max-width: 400px; margin-bottom: 44px; font-weight: 300;
+}
+.hero-price-row {
+  display: flex; align-items: baseline; gap: 16px; margin-bottom: 36px;
+}
+.hero-price {
+  font-family: var(--serif); font-size: clamp(38px, 4.5vw, 58px);
+  color: var(--oro); font-weight: 300; line-height: 1;
+  letter-spacing: -0.01em;
+}
+.hero-price-note {
+  font-size: 11px; color: var(--texto2); letter-spacing: 0.14em; line-height: 1.5;
+}
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-fill {
+  background: var(--oro); color: var(--negro);
+  font-size: 10px; letter-spacing: 0.22em; font-weight: 500;
+  padding: 15px 32px; border: none; cursor: pointer;
+  transition: opacity 0.2s; white-space: nowrap;
+}
+.btn-fill:hover { opacity: 0.85; }
+.btn-out {
+  background: transparent; border: 1px solid rgba(200,169,110,0.5);
+  color: var(--oro); font-size: 10px; letter-spacing: 0.22em;
+  font-weight: 400; padding: 14px 30px; cursor: pointer;
+  transition: all 0.25s; white-space: nowrap;
+}
+.btn-out:hover { border-color: var(--oro); background: rgba(200,169,110,0.07); }
+
+.hero-scroll {
+  position: absolute; bottom: 40px; right: 48px; z-index: 2;
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-scroll-txt { font-size: 9px; letter-spacing: 0.24em; color: var(--texto2); writing-mode: vertical-rl; }
+.hero-scroll-bar {
+  width: 1px; height: 56px;
+  background: linear-gradient(to bottom, var(--oro), transparent);
+  animation: scrollPulse 2s infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* ─── STATS STRIP ─── */
+.stats {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  border-top: 1px solid rgba(200,169,110,0.1);
+  border-bottom: 1px solid rgba(200,169,110,0.1);
+}
+.stat {
+  padding: 26px 20px; text-align: center;
+  border-right: 1px solid rgba(200,169,110,0.07);
+  background: var(--carbon);
+}
+.stat:last-child { border-right: none; }
+.stat-n {
+  font-family: var(--serif); font-size: 30px;
+  color: var(--oro); font-weight: 300; margin-bottom: 5px; line-height: 1;
+}
+.stat-l {
+  font-size: 9px; letter-spacing: 0.2em; color: var(--texto2); font-weight: 400;
+}
+
+/* ─── GALERÍA ─── */
+.gallery {
+  display: grid;
+  grid-template-areas:
+    "main main s1 s2"
+    "main main s3 s4";
+  gap: 3px;
+  background: var(--negro);
+}
+.g-main { grid-area: main; min-height: 540px; }
+.g-s1 { grid-area: s1; }
+.g-s2 { grid-area: s2; }
+.g-s3 { grid-area: s3; }
+.g-s4 { grid-area: s4; }
+.g-item {
+  position: relative; overflow: hidden; cursor: pointer;
+}
+.g-item img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+.g-item:hover img { transform: scale(1.05); }
+.g-item::after {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(9,9,11,0.25);
+  transition: opacity 0.3s;
+}
+.g-item:hover::after { opacity: 0; }
+.g-empty {
+  background: var(--gris1);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 8px; min-height: 265px;
+}
+.g-empty-icon { font-size: 28px; opacity: 0.25; }
+.g-empty-txt {
+  font-size: 9px; letter-spacing: 0.22em; color: var(--texto2);
+}
+.gallery-caption {
+  background: var(--carbon); padding: 10px 40px;
+  font-size: 10px; color: var(--texto2); letter-spacing: 0.16em;
+  border-bottom: 1px solid rgba(200,169,110,0.06);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.gallery-caption-cta {
+  color: var(--oro); cursor: pointer; font-size: 10px; letter-spacing: 0.16em;
+  background: none; border: none;
+}
+
+/* ─── SECTIONS ─── */
+section { padding: 90px 0; }
+.container { max-width: 1160px; margin: 0 auto; padding: 0 48px; }
+
+.sec-eyebrow {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+}
+.sec-eyebrow-line { width: 28px; height: 1px; background: var(--oro); }
+.sec-eyebrow-txt { font-size: 10px; letter-spacing: 0.28em; color: var(--oro); font-weight: 400; }
+.sec-title {
+  font-family: var(--serif); font-size: clamp(30px, 4vw, 48px);
+  color: var(--blanco); line-height: 1.1; font-weight: 300; margin-bottom: 12px;
+}
+.sec-title em { font-style: italic; color: var(--oro2); }
+.sec-sub { font-size: 13px; color: var(--texto); line-height: 1.8; max-width: 500px; margin-bottom: 52px; }
+
+/* ─── FEATURES ─── */
+.features {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; margin-bottom: 48px;
+}
+.feat {
+  background: var(--gris1); padding: 36px 28px;
+  position: relative; overflow: hidden;
+  transition: background 0.3s;
+}
+.feat::before {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 2px; background: var(--oro);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.4s var(--ease);
+}
+.feat:hover { background: var(--gris2); }
+.feat:hover::before { transform: scaleX(1); }
+.feat-num {
+  font-family: var(--serif); font-size: 48px; color: rgba(200,169,110,0.12);
+  font-weight: 300; line-height: 1; margin-bottom: 16px;
+}
+.feat-title { font-size: 15px; color: var(--blanco); font-weight: 500; margin-bottom: 8px; }
+.feat-desc { font-size: 12px; color: var(--texto); line-height: 1.75; }
+
+/* ─── FEAT LIST ─── */
+.feat-list {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0;
+  border: 1px solid rgba(200,169,110,0.1);
+}
+.fl-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(200,169,110,0.07);
+  border-right: 1px solid rgba(200,169,110,0.07);
+  transition: background 0.2s;
+}
+.fl-item:hover { background: rgba(200,169,110,0.03); }
+.fl-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--oro); flex-shrink: 0; }
+.fl-txt { font-size: 12px; color: var(--texto); line-height: 1.5; }
+
+/* ─── FICHA TÉCNICA ─── */
+.ficha-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+}
+.ft {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px 24px; background: var(--gris1);
+  border-left: 2px solid transparent;
+  transition: border-color 0.25s, background 0.25s;
+}
+.ft:hover { border-left-color: var(--oro); background: var(--gris2); }
+.ft-label { font-size: 11px; color: var(--texto2); letter-spacing: 0.12em; }
+.ft-value { font-size: 13px; color: var(--blanco); font-weight: 500; text-align: right; }
+.ft-value.g { color: var(--oro); }
+
+/* ─── HIGHLIGHT ─── */
+.highlight {
+  position: relative; overflow: hidden;
+  background: var(--gris1);
+  display: grid; grid-template-columns: 1fr 1fr; min-height: 480px;
+}
+.hl-img { position: relative; overflow: hidden; }
+.hl-img img { width: 100%; height: 100%; object-fit: cover; }
+.hl-img::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to right, transparent 60%, var(--gris1) 100%);
+}
+.hl-content {
+  padding: 64px 56px; display: flex; flex-direction: column; justify-content: center;
+}
+.hl-tag {
+  display: inline-block; background: rgba(200,169,110,0.1);
+  border: 1px solid rgba(200,169,110,0.3); color: var(--oro);
+  font-size: 9px; letter-spacing: 0.22em; padding: 6px 14px;
+  margin-bottom: 24px; width: fit-content;
+}
+.hl-title {
+  font-family: var(--serif); font-size: clamp(28px, 3vw, 40px);
+  color: var(--blanco); font-weight: 300; line-height: 1.15; margin-bottom: 20px;
+}
+.hl-title em { font-style: italic; color: var(--oro2); }
+.hl-desc { font-size: 13px; color: var(--texto); line-height: 1.85; margin-bottom: 32px; }
+
+/* ─── FRICCIÓN ─── */
+.fric-section {
+  background: var(--gris1);
+  border-top: 1px solid rgba(200,169,110,0.1);
+  border-bottom: 1px solid rgba(200,169,110,0.1);
+}
+.fric-inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.fric-title {
+  font-family: var(--serif); font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 300; color: var(--blanco); line-height: 1.1; margin-bottom: 16px;
+}
+.fric-title em { font-style: italic; color: var(--oro2); }
+.fric-sub { font-size: 13px; color: var(--texto); line-height: 1.8; margin-bottom: 0; }
+.fric-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.fric-opt {
+  background: var(--negro); border: 1px solid rgba(244,240,232,0.08);
+  padding: 20px 18px; cursor: pointer; text-align: left;
+  transition: all 0.25s var(--ease);
+  position: relative; overflow: hidden;
+}
+.fric-opt::before {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 2px; background: var(--oro);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s var(--ease);
+}
+.fric-opt:hover { border-color: rgba(200,169,110,0.35); background: rgba(200,169,110,0.03); }
+.fric-opt:hover::before { transform: scaleX(1); }
+.fric-opt.sel { border-color: var(--oro); background: rgba(200,169,110,0.06); }
+.fric-opt.sel::before { transform: scaleX(1); }
+.fric-opt-title {
+  font-size: 11px; letter-spacing: 0.14em; color: var(--blanco);
+  font-weight: 500; margin-bottom: 5px;
+}
+.fric-opt-desc { font-size: 11px; color: var(--texto2); line-height: 1.5; }
+
+/* ─── PRECIO ─── */
+.precio-wrap {
+  background: linear-gradient(135deg, var(--gris2), var(--gris1));
+  border: 1px solid rgba(200,169,110,0.15);
+  padding: 56px 48px; text-align: center;
+}
+.precio-eyebrow {
+  font-size: 10px; letter-spacing: 0.28em; color: var(--texto2); margin-bottom: 20px;
+}
+.precio-main {
+  font-family: var(--serif); font-size: clamp(52px, 7vw, 88px);
+  color: var(--oro); font-weight: 300; line-height: 1; margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+.precio-sub { font-size: 12px; color: var(--texto2); letter-spacing: 0.16em; margin-bottom: 36px; }
+.precio-tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 44px; }
+.precio-tag {
+  border: 1px solid rgba(200,169,110,0.25); padding: 7px 18px;
+  font-size: 9px; color: var(--oro); letter-spacing: 0.18em;
+}
+.precio-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+/* ─── CONTACTO ─── */
+.ctc {
+  position: relative; padding: 100px 48px; text-align: center; overflow: hidden;
+}
+.ctc-bg {
+  position: absolute; inset: 0;
+  background-image: url(foto1.jpg);
+  background-size: cover; background-position: center;
+  filter: brightness(0.12) saturate(0.5);
+}
+.ctc-overlay {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(9,9,11,0.3) 0%, rgba(9,9,11,0.85) 100%);
+}
+.ctc-content { position: relative; z-index: 1; }
+.ctc-title {
+  font-family: var(--serif); font-size: clamp(34px, 5vw, 60px);
+  color: var(--blanco); font-weight: 300; line-height: 1.1; margin-bottom: 8px;
+}
+.ctc-title em { font-style: italic; color: var(--oro2); }
+.ctc-line { width: 44px; height: 1px; background: var(--oro); margin: 24px auto; }
+.ctc-sub {
+  font-size: 14px; color: var(--texto);
+  max-width: 420px; margin: 0 auto 48px; line-height: 1.85;
+}
+.ctc-info {
+  margin-top: 48px; display: flex; gap: 48px; justify-content: center;
+  flex-wrap: wrap;
+}
+.ctc-info span { font-size: 11px; color: var(--texto2); letter-spacing: 0.1em; }
+
+/* ─── WA FLOAT ─── */
+.wa-float {
+  position: fixed; bottom: 28px; right: 28px; z-index: 200;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #25d366; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 24px rgba(37,211,102,0.4);
+  cursor: pointer; text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.wa-float:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(37,211,102,0.5); }
+.wa-float svg { width: 26px; height: 26px; fill: white; }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--carbon);
+  padding: 32px 48px;
+  border-top: 1px solid rgba(200,169,110,0.08);
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+}
+.footer-logo {
+  font-family: var(--serif); font-size: 16px; letter-spacing: 0.22em;
+  color: var(--blanco); font-weight: 400;
+}
+.footer-logo span { color: var(--oro); }
+.footer-txt { font-size: 11px; color: var(--texto2); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  nav { padding: 14px 20px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; min-height: 100svh; }
+  .hero-right { position: absolute; inset: 0; }
+  .hero-left { padding: 100px 24px 72px; position: relative; z-index: 2;
+    background: linear-gradient(to top, rgba(9,9,11,0.98) 50%, rgba(9,9,11,0.5) 100%); }
+  .hero-scroll { display: none; }
+  .stats { grid-template-columns: repeat(3, 1fr); }
+  .stat:nth-child(4), .stat:nth-child(5) { grid-column: span 1; }
+  .gallery { grid-template-areas: "main main" "s1 s2" "s3 s4"; grid-template-columns: 1fr 1fr; }
+  .g-main { min-height: 320px; }
+  .g-empty { min-height: 160px; }
+  .container { padding: 0 20px; }
+  section { padding: 64px 0; }
+  .features { grid-template-columns: 1fr; }
+  .feat-list { grid-template-columns: 1fr 1fr; }
+  .ficha-grid { grid-template-columns: 1fr; }
+  .highlight { grid-template-columns: 1fr; }
+  .hl-img { height: 300px; }
+  .hl-img::after { background: linear-gradient(to top, var(--gris1) 0%, transparent 60%); }
+  .hl-content { padding: 40px 24px; }
+  .fric-inner { grid-template-columns: 1fr; gap: 40px; }
+  .precio-wrap { padding: 40px 20px; }
+  .ctc { padding: 72px 20px; }
+  footer { padding: 24px 20px; flex-direction: column; text-align: center; }
+  .gallery-caption { padding: 10px 20px; }
+}
+@media (max-width: 560px) {
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .feat-list { grid-template-columns: 1fr; }
+  .fric-opts { grid-template-columns: 1fr; }
+  .fl-item:nth-child(3n) { border-right: 1px solid rgba(200,169,110,0.07); }
+  .hero-price { font-size: 36px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">A ESTRENAR · ENTREGA INMEDIATA · APTO CRÉDITO HIPOTECARIO</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="#inicio">AUREO <span>CAÑÓN</span></a>
+  <div class="nav-links">
+    <a href="#galeria">Galería</a>
+    <a href="#detalles">Detalles</a>
+    <a href="#precio">Precio</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+  <a class="nav-cta" href="#" onclick="wa('nav');return false;">CONSULTAR</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-left">
+    <div class="hero-kicker">
+      <div class="hero-kicker-line"></div>
+      <span class="hero-kicker-txt">SAN FERNANDO · 2 AMBIENTES · A ESTRENAR</span>
+    </div>
+    <h1 class="hero-title">
+      El depto que buscabas<br>
+      <em>existe y está listo.</em>
+    </h1>
+    <p class="hero-sub">
+      Aureo Cañón — diseño moderno, terminaciones de primera y terraza 360° con parrilla. En el corazón de San Fernando.
+    </p>
+    <div class="hero-price-row">
+      <span class="hero-price">Consultar</span>
+      <span class="hero-price-note">APTO CRÉDITO<br>COCHERA DISPONIBLE</span>
+    </div>
+    <div class="hero-btns">
+      <button class="btn-fill" onclick="wa('vivir')">QUIERO VIVIR ACÁ</button>
+      <button class="btn-out" onclick="wa('invertir')">ES PARA INVERTIR</button>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img class="hero-img" src="foto2.jpg" alt="Aureo Cañón San Fernando interior" onerror="this.style.background='#18181c';this.removeAttribute('src')">
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-bar"></div>
+    <span class="hero-scroll-txt">SCROLL</span>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><div class="stat-n">2</div><div class="stat-l">AMBIENTES</div></div>
+  <div class="stat"><div class="stat-n">360°</div><div class="stat-l">TERRAZA CON PARRILLA</div></div>
+  <div class="stat"><div class="stat-n">✓</div><div class="stat-l">COCINA EQUIPADA</div></div>
+  <div class="stat"><div class="stat-n">✓</div><div class="stat-l">BALCÓN AL FRENTE</div></div>
+  <div class="stat"><div class="stat-n">✓</div><div class="stat-l">APTO CRÉDITO</div></div>
+</div>
+
+<!-- GALERÍA -->
+<div id="galeria">
+  <div class="gallery">
+    <div class="g-item g-main">
+      <img src="foto3.jpg" alt="Living Aureo Cañón" onerror="this.parentElement.classList.add('g-empty-state')">
+    </div>
+    <div class="g-item g-s1">
+      <img src="foto4.jpg" alt="Cocina Aureo Cañón" onerror="this.parentElement.innerHTML='<div class=g-empty><div class=g-empty-icon>📷</div><div class=g-empty-txt>FOTO PRÓXIMAMENTE</div></div>'">
+    </div>
+    <div class="g-item g-s2">
+      <img src="foto5.jpg" alt="Dormitorio Aureo Cañón" onerror="this.parentElement.innerHTML='<div class=g-empty><div class=g-empty-icon>📷</div><div class=g-empty-txt>FOTO PRÓXIMAMENTE</div></div>'">
+    </div>
+    <div class="g-item g-s3">
+      <img src="foto6.jpg" alt="Balcón Aureo Cañón" onerror="this.parentElement.innerHTML='<div class=g-empty><div class=g-empty-icon>📷</div><div class=g-empty-txt>FOTO PRÓXIMAMENTE</div></div>'">
+    </div>
+    <div class="g-item g-s4">
+      <img src="foto6.jpg" alt="Terraza Aureo Cañón" onerror="this.parentElement.innerHTML='<div class=g-empty><div class=g-empty-icon>📷</div><div class=g-empty-txt>FOTO PRÓXIMAMENTE</div></div>'">
+    </div>
+  </div>
+  <div class="gallery-caption">
+    <span>AUREO CAÑÓN · SAN FERNANDO · FOTOS REALES DE LA UNIDAD</span>
+    <button class="gallery-caption-cta" onclick="wa('fotos')">VER MÁS FOTOS →</button>
+  </div>
+</div>
+
+<!-- CARACTERÍSTICAS -->
+<section style="background: var(--negro);" id="detalles">
+  <div class="container">
+    <div class="sec-eyebrow"><div class="sec-eyebrow-line"></div><span class="sec-eyebrow-txt">LA UNIDAD</span></div>
+    <h2 class="sec-title">Diseñado para vivir bien.<br><em>Listo para el día uno.</em></h2>
+    <p class="sec-sub">2 ambientes a estrenar con materiales de primera selección. Cada detalle pensado para quien elige no comprometer calidad.</p>
+    <div class="features">
+      <div class="feat">
+        <div class="feat-num">01</div>
+        <div class="feat-title">Terraza 360° con parrilla</div>
+        <div class="feat-desc">Terraza comunitaria en altura con vista panorámica a todo San Fernando y dos parrillas con mesas. El asado del domingo ya tiene dirección.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-num">02</div>
+        <div class="feat-title">Cocina equipada premium</div>
+        <div class="feat-desc">Mobiliario de cocina completo, mesada de granito con bacha de acero inoxidable. Cortinas roller incluidas en todas las ventanas.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-num">03</div>
+        <div class="feat-title">Balcón al frente + cochera</div>
+        <div class="feat-desc">Balcón con vista al frente del edificio y posibilidad de adquirir cochera cubierta. Ingreso de jerarquía con pasillos amplios y modernos.</div>
+      </div>
+    </div>
+    <div class="feat-list">
+      <div class="fl-item"><div class="fl-dot"></div><div class="fl-txt">Terminaciones de primera calidad</div></div>
+      <div class="fl-item"><div class="fl-dot"></div><div class="fl-txt">Cocina con mobiliario completo</div></div>
+      <div class="fl-item"><div class="fl-dot"></div><div class="fl-txt">Mesada de granito + bacha acero inox</div></div>
+      <div class="fl-item"><div class="fl-dot"></div><div class="fl-txt">Cortinas roller en todas las ventanas</div></div>
+      <div class="fl-item"><div class="fl-dot"></div><div class="fl-txt">Baño completo con artefactos Roca</div></div>
+      <div class="fl-item"><div class="fl-dot"></div><div class="fl-txt">Balcón con vista al frente</div></div>
+      <div class="fl-item"><div class="fl-dot"></div><div class="fl-txt">Placard corredizo</div></div>
+      <div class="fl-item"><div class="fl-dot"></div><div class="fl-txt">Pre-instalación de aire acondicionado</div></div>
+      <div class="fl-item"><div class="fl-dot"></div><div class="fl-txt">Calefacción a gas tiro balanceado</div></div>
+      <div class="fl-item"><div class="fl-dot"></div><div class="fl-txt">Pisos de porcelanato pulido</div></div>
+      <div class="fl-item"><div class="fl-dot"></div><div class="fl-txt">Lobby con detalles en acero inoxidable</div></div>
+      <div class="fl-item"><div class="fl-dot"></div><div class="fl-txt">Aberturas de aluminio anodizado</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FICHA TÉCNICA -->
+<section style="background: var(--carbon);" id="ficha">
+  <div class="container">
+    <div class="sec-eyebrow"><div class="sec-eyebrow-line"></div><span class="sec-eyebrow-txt">FICHA TÉCNICA</span></div>
+    <h2 class="sec-title">Los datos duros.</h2>
+    <div class="sec-sub" style="margin-bottom: 40px;">Toda la información técnica de la unidad sin vueltas.</div>
+    <div class="ficha-grid">
+      <div class="ft"><span class="ft-label">EDIFICIO</span><span class="ft-value">Aureo Cañón</span></div>
+      <div class="ft"><span class="ft-label">UBICACIÓN</span><span class="ft-value">San Fernando, GBA Norte</span></div>
+      <div class="ft"><span class="ft-label">TIPO</span><span class="ft-value">2 Ambientes</span></div>
+      <div class="ft"><span class="ft-label">ESTADO</span><span class="ft-value g">A estrenar · Entrega inmediata</span></div>
+      <div class="ft"><span class="ft-label">BALCÓN</span><span class="ft-value">Al frente del edificio</span></div>
+      <div class="ft"><span class="ft-label">COCHERA</span><span class="ft-value">Disponible por separado</span></div>
+      <div class="ft"><span class="ft-label">AMENITIES</span><span class="ft-value">Terraza 360° + 2 parrillas</span></div>
+      <div class="ft"><span class="ft-label">CALEFACCIÓN</span><span class="ft-value">Gas tiro balanceado</span></div>
+      <div class="ft"><span class="ft-label">PISOS</span><span class="ft-value">Porcelanato pulido</span></div>
+      <div class="ft"><span class="ft-label">BAÑO</span><span class="ft-value">Artefactos Roca · Bañera</span></div>
+      <div class="ft"><span class="ft-label">APTO CRÉDITO</span><span class="ft-value g">Sí · Hipotecario</span></div>
+      <div class="ft"><span class="ft-label">DESARROLLADOR</span><span class="ft-value">Aureo Desarrollos</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHT TERRAZA -->
+<div class="highlight">
+  <div class="hl-img">
+    <img src="foto5.jpg" alt="Terraza Aureo Cañón" onerror="this.style.background='var(--gris1)';this.removeAttribute('src')">
+  </div>
+  <div class="hl-content">
+    <div class="hl-tag">AMENITY EXCLUSIVO</div>
+    <h3 class="hl-title">Terraza 360°<br><em>con dos parrillas.</em></h3>
+    <p class="hl-desc">
+      Desde la terraza de Aureo Cañón tenés vista panorámica a todo San Fernando. Dos parrillas con mesas disponibles para propietarios. El asado del domingo ya tiene su lugar.
+    </p>
+    <button class="btn-fill" onclick="wa('visita')">COORDINAR VISITA</button>
+  </div>
+</div>
+
+<!-- FRICCIÓN -->
+<section class="fric-section" id="consulta">
+  <div class="container">
+    <div class="fric-inner">
+      <div>
+        <div class="sec-eyebrow"><div class="sec-eyebrow-line"></div><span class="sec-eyebrow-txt">TU PRÓXIMO PASO</span></div>
+        <h2 class="fric-title">¿Qué estás<br><em>buscando?</em></h2>
+        <p class="fric-sub">Contanos para mostrarte exactamente lo que necesitás saber. Enmanuel te responde personalmente, sin bots ni intermediarios.</p>
+      </div>
+      <div>
+        <div class="fric-opts">
+          <button class="fric-opt" onclick="wa('vivir')">
+            <div class="fric-opt-title">QUIERO VIVIR ACÁ</div>
+            <div class="fric-opt-desc">Primera vivienda o me mudo</div>
+          </button>
+          <button class="fric-opt" onclick="wa('invertir')">
+            <div class="fric-opt-title">QUIERO INVERTIR</div>
+            <div class="fric-opt-desc">Busco rentabilidad o revalorización</div>
+          </button>
+          <button class="fric-opt" onclick="wa('credito')">
+            <div class="fric-opt-title">TENGO CRÉDITO</div>
+            <div class="fric-opt-desc">Quiero saber si califica</div>
+          </button>
+          <button class="fric-opt" onclick="wa('visita')">
+            <div class="fric-opt-title">COORDINAR VISITA</div>
+            <div class="fric-opt-desc">Ya sé lo que busco</div>
+          </button>
+        </div>
+        <p style="margin-top:14px;font-size:10px;color:var(--texto2);letter-spacing:0.1em;text-align:center">
+          Respuesta en menos de 2 horas en horario hábil
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRECIO -->
+<section style="background: var(--negro);" id="precio">
+  <div class="container">
+    <div class="sec-eyebrow"><div class="sec-eyebrow-line"></div><span class="sec-eyebrow-txt">INVERSIÓN</span></div>
+    <h2 class="sec-title">Un precio para<br><em>cerrar decisiones.</em></h2>
+    <p class="sec-sub" style="margin-bottom:40px">San Fernando zona norte está en alza sostenida. Un departamento a estrenar con estas terminaciones a este precio no espera.</p>
+    <div class="precio-wrap">
+      <div class="precio-eyebrow">PRECIO DE VENTA · AUREO CAÑÓN</div>
+      <div class="precio-main">Consultar</div>
+      <div class="precio-sub">PRECIO FINAL · APTO CRÉDITO HIPOTECARIO</div>
+      <div class="precio-tags">
+        <span class="precio-tag">A ESTRENAR</span>
+        <span class="precio-tag">2 AMBIENTES</span>
+        <span class="precio-tag">APTO CRÉDITO</span>
+        <span class="precio-tag">BALCÓN AL FRENTE</span>
+        <span class="precio-tag">TERRAZA 360° + PARRILLA</span>
+        <span class="precio-tag">COCHERA DISPONIBLE</span>
+      </div>
+      <div class="precio-btns">
+        <button class="btn-fill" onclick="wa('precio')">CONSULTAR PRECIO</button>
+        <button class="btn-out" onclick="wa('visita')">COORDINAR VISITA</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section style="padding:0" id="contacto">
+  <div class="ctc">
+    <div class="ctc-bg"></div>
+    <div class="ctc-overlay"></div>
+    <div class="ctc-content">
+      <h2 class="ctc-title">Una conversación de 20 minutos<br><em>cambia el análisis.</em></h2>
+      <div class="ctc-line"></div>
+      <p class="ctc-sub">Enmanuel te muestra el precio, la disponibilidad y todos los detalles. Sin folletos. Sin vueltas.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <button class="btn-fill" onclick="wa('vivir')">QUIERO VIVIR ACÁ</button>
+        <button class="btn-out" onclick="wa('visita')">COORDINAR VISITA</button>
+      </div>
+      <div class="ctc-info">
+        <span>San Fernando, GBA Norte</span>
+        <span>+54 9 11 7369-7105</span>
+        <span>Enmanuel · Aureo Desarrollos</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">AUREO <span>CAÑÓN</span></div>
+  <div class="footer-txt">© 2026 · San Fernando, Buenos Aires · Aureo Desarrollos · Todos los derechos reservados</div>
+</footer>
+
+<!-- WA FLOTANTE -->
+<a class="wa-float" href="https://wa.me/5491173697105?text=Hola%20Enmanuel%2C%20vi%20la%20landing%20de%20Aureo%20Ca%C3%B1%C3%B3n%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n." target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+const WA = "5491173697105";
+const MSGS = {
+  vivir: "Hola Enmanuel, vi el depto en Aureo Cañón, San Fernando. Lo estoy evaluando para vivir y quiero coordinar una visita.",
+  invertir: "Hola Enmanuel, vi Aureo Cañón en San Fernando. Lo evalúo como inversión, ¿me podés pasar los números?",
+  credito: "Hola Enmanuel, vi Aureo Cañón en San Fernando. Tengo crédito hipotecario y quiero saber si el depto califica.",
+  visita: "Hola Enmanuel, quiero coordinar una visita a Aureo Cañón en San Fernando. ¿Cuándo podría ser?",
+  precio: "Hola Enmanuel, vi la landing de Aureo Cañón en San Fernando y quiero consultar el precio y disponibilidad.",
+  fotos: "Hola Enmanuel, vi las fotos de Aureo Cañón y quiero ver más. ¿Tenés un tour o más imágenes?",
+  nav:   "Hola Enmanuel, vi la landing de Aureo Cañón en San Fernando y quiero más información.",
+};
+
+function wa(tipo) {
+  const msg = MSGS[tipo] || MSGS.nav;
+  window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(msg), "_blank");
+  try { fbq('track','Lead',{content_name:'Aureo Canon',content_category:tipo}); } catch(e){}
+}
+
+// Nav scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('sc', scrollY > 60);
+});
+
+// Fricción visual
+document.querySelectorAll('.fric-opt').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.fric-opt').forEach(b => b.classList.remove('sel'));
+    this.classList.add('sel');
+  });
+});
+
+// Lazy image load con fade
+document.querySelectorAll('img').forEach(img => {
+  img.style.opacity = '0';
+  img.style.transition = 'opacity 0.5s';
+  img.addEventListener('load', () => { img.style.opacity = '1'; });
+  if (img.complete) img.style.opacity = '1';
+});
+</script>
+</body>
+</html>
